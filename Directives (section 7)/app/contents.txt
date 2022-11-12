@@ -1,1 +1,5 @@
-
+This project contains--->
+1. Creating custom structural and attribute directive.
+2. expansion of ngIf directive.
+3. Switch case example.
+4. HostListener and HostBinding example.
