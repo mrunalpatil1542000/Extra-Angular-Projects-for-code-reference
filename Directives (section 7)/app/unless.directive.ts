@@ -1,3 +1,5 @@
+<!--This is custom strctural directive.-->
+
 import { Directive, Input, TemplateRef, ViewContainerRef } from '@angular/core';
 
 @Directive({
