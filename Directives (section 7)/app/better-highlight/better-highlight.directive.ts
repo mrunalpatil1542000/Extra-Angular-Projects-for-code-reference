@@ -1,3 +1,5 @@
+<!--This is attribute directive using Renderer2 class to change property of element instead of ElementRef. Also describe HostBinding and HostListener.-->
+
 import {
   Directive,
   Renderer2,
