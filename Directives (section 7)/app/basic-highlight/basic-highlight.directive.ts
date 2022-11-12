@@ -1,3 +1,5 @@
+<!--This custom attribute directive uses ElementRef class to change the property of element.-->
+
 import { Directive, ElementRef, OnInit } from '@angular/core';
 
 @Directive({
