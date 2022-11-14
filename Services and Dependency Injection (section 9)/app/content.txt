@@ -1,1 +1,4 @@
+This project describes use of services.
+It uses two services named Account and logging.
+Account service is used to stored accounts data and logging service is used to logged the status of account to be changed.
 
