@@ -1,5 +1,6 @@
-import { EventEmitter, Injectable } from '@angular/core';
+<!--Account service uses logging service. Account service is used to store the accounts data. And manipulate the data.-->
 
+import { EventEmitter, Injectable } from '@angular/core';
 import { LoggingService } from './logging.service';
 
 @Injectable()
