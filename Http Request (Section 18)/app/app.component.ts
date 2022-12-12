@@ -14,8 +14,8 @@ import { PostsService } from './posts.service';
 export class AppComponent implements OnInit, OnDestroy {
   loadedPosts: Post[] = [];
   isFetching = false;
-  error = null;
-  private errorSub: Subscription;
+  error: any;
+  private errorSub: Subscription = new Subscription;
 
   constructor(private http: HttpClient, private postsService: PostsService) {}
 
@@ -45,17 +45,35 @@ export class AppComponent implements OnInit, OnDestroy {
   onFetchPosts() {
     // Send Http request
     this.isFetching = true;
-    this.postsService.fetchPosts().subscribe(
-      posts => {
-        this.isFetching = false;
-        this.loadedPosts = posts;
-      },
-      error => {
-        this.isFetching = false;
-        this.error = error.message;
-        console.log(error);
-      }
-    );
+
+    //This signature of subscribe method is deprecated...
+    //For more info https://rxjs.dev/deprecations/subscribe-arguments
+    
+    // this.postsService.fetchPosts().subscribe(
+    //   posts => {
+    //     this.isFetching = false;
+    //     this.loadedPosts = posts;
+    //   },
+    //   error => {
+    //     this.isFetching = false;
+    //     this.error = error.message;
+    //     console.log(error);
+    //   }
+    // );
+
+    
+    //New signature of subscribe method
+    this.postsService.fetchPosts().subscribe({
+        next: (x) => {
+          this.isFetching = false;
+          this.loadedPosts = x;
+        },
+        error: (e) => {
+          this.isFetching = false;
+          this.error = e.message;
+          console.log(e);
+        }
+      });
   }
 
   onClearPosts() {

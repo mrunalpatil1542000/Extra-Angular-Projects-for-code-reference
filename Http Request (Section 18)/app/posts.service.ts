@@ -26,14 +26,23 @@ export class PostsService {
           observe: 'response'                                   //observe property is used to define how much data we want in response (not extracted response data only)
         }                                                       //1.body - (default) To get extracted data and converted to js object. 2.response - to get all data with headers and all.
       )
-      .subscribe(
-        responseData => {
+      .subscribe({
+        next: (responseData) => {
           console.log(responseData);
         },
-        error => {
-          this.error.next(error.message);
+        error: (e) => {
+          this.error.next(e.message);
         }
-      );
+      });
+      
+      // .subscribe(
+      //   responseData => {
+      //     console.log(responseData);
+      //   },
+      //   error => {
+      //     this.error.next(error.message);
+      //   }
+      // );
   }
 
   fetchPosts() {
