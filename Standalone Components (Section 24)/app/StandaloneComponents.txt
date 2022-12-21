@@ -1,1 +1,5 @@
+Components, directives, and pipes can now be marked as "standalone: true". Angular classes marked as standalone do not need to be declared in an NgModule (the Angular compiler will report an error if you try).
 
+Standalone components specify their dependencies directly instead of getting them through NgModules. For example, if PhotoGalleryComponent is a standalone component, it can directly import another standalone component ImageGridComponent:
+
+imports can also be used to reference standalone directives and pipes. In this way, standalone components can be written without the need to create an NgModule to manage template dependencies.
