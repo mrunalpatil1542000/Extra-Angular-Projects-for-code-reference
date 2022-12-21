@@ -1,1 +1,45 @@
+Angular Universal, a technology that renders Angular applications on the server.
+
+A normal Angular application executes in the browser, rendering pages in the DOM in response to user actions. Angular Universal executes on the server, generating static application pages that later get bootstrapped on the client. This means that the application generally renders more quickly, giving users a chance to view the application layout before it becomes fully interactive.
+
+There are three main reasons to create a Universal version of your application.
+
+Facilitate web crawlers through search engine optimization (SEO)
+Improve performance on mobile and low-powered devices
+Show the first page quickly with a first-contentful paint (FCP)
+
+...For more...y
+https://angular.io/guide/universal
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+To make the project universal run cmd
+cmd ----> ng add @nguniversal/express-engine --clientProject ng-complete-guide-update
+
+"ng-complete-guide-update" this is project name we can get from angular.json under Projects.
+
+after this the the code is first render and executed on the server not in the browser. So first page is render on server and only after the first page rendered and return to the user then only SPA will start to run in the browser of the user
+
+To build the app for angular universal cmd
+cmd ----> npm run build:ssr
+
+Now to serve this app we need the web host which is capable of executing node js
+
+To run the app on server
+cmd ----> npm run serve:ssr
+this will run the app on localhost
+
+Before using the angular universal the page source is different. we have only <approot> element and some scripts (no content of the page). So that search engine can not index the app. But after using angular universal the server will return the content that we will see on the home page to the browser then search engine will see the content from page source and will index our website.
+
+
+You typically use Angular Universal to pre-render Angular pages on the server. Once the app then runs on the client, it's a normal SPA again.
+
+Server-side rendering (SSR) can make sense because of SEO considerations (crawler should see what your users see) or because you want to deliver a finished page to your users (rather than creating the page in the browser).
+
+But that also has one important implication: You MUST NOT use any browser-only APIs like document.querySelector()  in your Angular code! 
+
+Simply because it will execute on the server and there, such APIs are not available.
+
+That's why, in this course, I recommended to use Angular features only: These features are safe to use because Angular will check if a certain API can be used before it uses it.
+
 
